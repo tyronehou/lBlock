@@ -2,42 +2,35 @@
 # Author: Tyrone Hou (tyroneh@bu.edu)
 # Purpose: ADT representing l-shaped blocks
 
+from graphics import *
+
 (L,R,U,D) = (-1,1,1,-1)
 
 
-class lBlock:
-    def __init__(self, x, y, orientation):
+class lBlock(Polygon):
+    def __init__(self, x, y, orientation, length):
         """ Defines a unique block on a Cartesian plane from
             x, y coords and a given orientation.
-                    x,y -- x and y coords of the center of the center block.
+                    x,y -- x and y coords of the smallest square that circumscribes the lBlock.
             orientation -- a tuple recording the two orientation of the corner blocks:
                            The first element is left/right, the second is up/down
                            1 - right or up -1 - left or down
             """
-
+        
         self.x = x
         self.y = y
-
-        if orientation == (R, U):    
-            self.orientation = 1
-        elif orientation == (L, U):
-            self.orientation = 2
-        elif orientation == (L, D):
-            self.orientation = 3
-        elif orientation == (R, D):
-            self.orientation = 4
-
-    #def draw(self):
-
-    def getBlock(self):
+        self.length = length
+        self.orientation = orientation
+        Polygon.__init__(self.calcPoints())
         
+    def calcPoints(self):
+        """ Calculates and returns a list of the vertices of the L-shaped tile"""
+
+        vertices = []
         
-    def rotateCC(self):
-        """Rotates the lBlock 90 degrees clockwise"""
+        for i in range(-1, 2):
+            for j in range(-1, 2):
+                if (i, j) is not orientation:
+                    vertices += [( self.x+(length*i), self.y+(length*j) )]
 
-        self.orientation = (self.orientation + 1) % 4;
-
-    def rotateCCW(self):
-        """ Rotates the lBlock 90 degrees counterclockwise"""
-
-        self.orientation = (self.orientation - 1) % 4;
+        return vertices

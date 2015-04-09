@@ -1,6 +1,6 @@
-import lBlock.py
+from lBlock import *
 
-class SquareGrid:
+class lGrid:
     def __init__(self, n):
         self.length = 2 ** n
         
