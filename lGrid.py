@@ -1,7 +1,18 @@
-from lBlock import *    
+from lBlock import *
+# directions dictionary comes from lBlock.py
 
 # helper function
-#def getCenter():
+def getCenter(x, y, d, s):
+    """ Calculates the center of a square of side length s
+        given a corner coordinate and the direction to the
+        center. Returns a double value.
+        x, y -- corner coord.
+        d -- direction vector
+        s -- side length
+    """
+
+    dx, dy = d
+    return (x + 0.5*s*dx, y + 0.5*s*dy)
     
 
 class lGrid:
@@ -26,7 +37,7 @@ class lGrid:
 
         hline = "-" * max(len(size), len(center), len(length))
         
-        return size + "\n" + hline + "\n" + center + "\n" + length
+        return hline + "\n" + size + "\n" + center + "\n" + length + "\n" + hline
         
         '''
     def tile(self, win):
@@ -50,7 +61,9 @@ def test():
 
     print()
 
-    
+    print("Testing getCenter(100, 100, directions[1], 2):")
+    print("(101.0, 101.0)")
+    print(getCenter(100, 100, directions[1], 2))
     
     win = GraphWin()
     win.close()
