@@ -26,7 +26,8 @@ def getDiagonal(x, y, d, s):
         a square of side length s given the other endpoint and the
         direction the endpoint faces. Returns a double value.
         d -- direction vector
-        corner -- (x,y) coordinate tuple """
+        corner -- (x,y) coordinate tuple
+    """
 
     dx, dy = d
     return (x + s*dx, y + s*dy)
@@ -34,9 +35,9 @@ def getDiagonal(x, y, d, s):
 
 class lBlock:
     def __init__(self, x, y, orient, length):
-        """ Defines a unique block on a Cartesian plane from
-            x, y coords and a given orientation.
-                    x,y -- x and y coords of the smallest square that circumscribes the lBlock.
+        """ Defines a unique block of given side length
+            from x, y coords and a given orientation.
+            x,y -- x and y coords of the smallest square that circumscribes the lBlock.
             orientation -- a tuple recording the two orientation of the corner blocks:
                            The first element is left/right, the second is up/down
                            1 - right or up -1 - left or down
